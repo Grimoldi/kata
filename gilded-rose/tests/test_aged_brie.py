@@ -18,7 +18,7 @@ class GildedRoseTest(unittest.TestCase):
     def test_quality_less_than_fifty(self):
         # The Quality of an item is never more than 50
         sell_in = 2
-        quality = 50
+        quality = m.MAX_QUALITY
         items = [Item(m.AGED_BRIAR, sell_in, quality)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
