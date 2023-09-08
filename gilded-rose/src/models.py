@@ -4,3 +4,4 @@ CONJURED_BREAD = "Conjured Bread"
 SULFURAS = "Sulfuras, Hand of Ragnaros"
 
 MAX_QUALITY = 50
+MIN_QUALITY = 0

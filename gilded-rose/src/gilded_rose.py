@@ -1,6 +1,15 @@
 # -*- coding: utf-8 -*-
+
 import src.models as m
+import src.updater as u
 from src.item import Item
+
+updater_mapping = {
+    m.AGED_BRIAR: u.AgedBrieUpdater(),
+    m.BACKSTAGE_PASS: u.BackstagePassUpdater(),
+    m.SULFURAS: u.SulfurasUpdater(),
+    m.CONJURED_BREAD: u.ConjuredUpdater(),
+}
 
 
 class GildedRose(object):
@@ -12,38 +21,9 @@ class GildedRose(object):
             self._update_quality_of_single_item(item)
 
     def _update_quality_of_single_item(self, item: Item) -> None:
-        if item.name == m.AGED_BRIAR:
-            self._increase_quality(item)
-            self._decrease_sellin_date(item)
+        updater = self._get_updater(item)
+        updater.update_quality(item)
+        updater.update_sellin(item)
 
-        elif item.name == m.BACKSTAGE_PASS:
-            if item.sell_in <= 0:
-                self._drop_quality(item)
-            elif item.sell_in < 6:
-                self._increase_quality(item, 3)
-            elif item.sell_in < 11:
-                self._increase_quality(item, 2)
-            else:
-                self._increase_quality(item)
-            self._decrease_sellin_date(item)
-
-        elif item.name == m.SULFURAS:
-            pass
-
-        else:
-            self._decrease_quality(item)
-            if item.sell_in <= 0:
-                self._decrease_quality(item)
-            self._decrease_sellin_date(item)
-
-    def _decrease_quality(self, item: Item, amount: int = 1) -> None:
-        item.quality = max(0, item.quality - amount)
-
-    def _increase_quality(self, item: Item, amount: int = 1) -> None:
-        item.quality = min(m.MAX_QUALITY, item.quality + amount)
-
-    def _decrease_sellin_date(self, item: Item) -> None:
-        item.sell_in -= 1
-
-    def _drop_quality(self, item: Item) -> None:
-        item.quality = 0
+    def _get_updater(self, item: Item) -> u.ItemUpdater:
+        return updater_mapping.get(item.name, u.DefaultUpdater())
