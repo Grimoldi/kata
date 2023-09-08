@@ -12,30 +12,29 @@ class GildedRose(object):
             self._update_quality_of_single_item(item)
 
     def _update_quality_of_single_item(self, item: Item) -> None:
-        if item.name != m.AGED_BRIAR and item.name != m.BACKSTAGE_PASS:
-            if item.name != m.SULFURAS:
-                self._decrease_quality(item)
-        else:
+        if item.name == m.AGED_BRIAR:
             self._increase_quality(item)
-            if item.name == m.BACKSTAGE_PASS:
-                if item.sell_in < 11:
-                    if item.quality < 50:
-                        item.quality = item.quality + 1
-                if item.sell_in < 6:
-                    if item.quality < 50:
-                        item.quality = item.quality + 1
-        if item.name != m.SULFURAS:
             self._decrease_sellin_date(item)
-        if item.sell_in < 0:
-            if item.name != m.AGED_BRIAR:
-                if item.name != m.BACKSTAGE_PASS:
-                    if item.quality > 0:
-                        if item.name != m.SULFURAS:
-                            self._decrease_quality(item)
-                else:
-                    self._drop_quality(item)
+
+        elif item.name == m.BACKSTAGE_PASS:
+            if item.sell_in <= 0:
+                self._drop_quality(item)
+            elif item.sell_in < 6:
+                self._increase_quality(item, 3)
+            elif item.sell_in < 11:
+                self._increase_quality(item, 2)
             else:
                 self._increase_quality(item)
+            self._decrease_sellin_date(item)
+
+        elif item.name == m.SULFURAS:
+            pass
+
+        else:
+            self._decrease_quality(item)
+            if item.sell_in <= 0:
+                self._decrease_quality(item)
+            self._decrease_sellin_date(item)
 
     def _decrease_quality(self, item: Item, amount: int = 1) -> None:
         item.quality = max(0, item.quality - amount)
