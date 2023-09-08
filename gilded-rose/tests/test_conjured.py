@@ -7,7 +7,7 @@ from src.gilded_rose import GildedRose, Item
 
 class GildedRoseTest(unittest.TestCase):
     def test_standard_quality_degradation(self):
-        # "Conjured" items degrade in Quality twice as fast as normal items
+        """Conjured items degrade in Quality twice as fast as normal items"""
         sell_in = 1
         quality = 4
         items = [Item(m.CONJURED_BREAD, sell_in, quality)]
@@ -16,7 +16,7 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(quality - 2, items[0].quality)
 
     def test_double_quality_degradation(self):
-        # "Conjured" items degrade in Quality twice as fast as normal items
+        """Conjured items degrade in Quality twice as fast as normal items"""
         sell_in = 0
         quality = 4
         items = [Item(m.CONJURED_BREAD, sell_in, quality)]
@@ -25,7 +25,7 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(quality - 4, items[0].quality)
 
     def test_positive_quality(self):
-        # The Quality of an item is never negative
+        """The Quality of an item is never negative"""
         sell_in = 0
         quality = 2
         items = [Item(m.CONJURED_BREAD, sell_in, quality)]

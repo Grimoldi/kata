@@ -7,7 +7,7 @@ from src.gilded_rose import GildedRose, Item
 
 class GildedRoseTest(unittest.TestCase):
     def test_aged_brie_increasing_quality(self):
-        # "Aged Brie" actually increases in Quality the older it gets
+        """Aged Brie actually increases in Quality the older it gets"""
         sell_in = 2
         quality = 2
         items = [Item(m.AGED_BRIAR, sell_in, quality)]
@@ -16,7 +16,7 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(quality + 1, items[0].quality)
 
     def test_quality_less_than_fifty(self):
-        # The Quality of an item is never more than 50
+        """The Quality of an item is never more than 50"""
         sell_in = 2
         quality = m.MAX_QUALITY
         items = [Item(m.AGED_BRIAR, sell_in, quality)]

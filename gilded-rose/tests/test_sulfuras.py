@@ -7,7 +7,7 @@ from src.gilded_rose import GildedRose, Item
 
 class GildedRoseTest(unittest.TestCase):
     def test_sulfuras_unchange_quality(self):
-        # "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
+        """Sulfuras, being a legendary item, never has to be sold or decreases in Quality"""
         sell_in = 2
         quality = 25
         items = [Item(m.SULFURAS, sell_in, quality)]
@@ -16,7 +16,7 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(quality, items[0].quality)
 
     def test_sulfuras_unchange_sellin(self):
-        # "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
+        """Sulfuras, being a legendary item, never has to be sold or decreases in Quality"""
         sell_in = 2
         quality = 25
         items = [Item(m.SULFURAS, sell_in, quality)]

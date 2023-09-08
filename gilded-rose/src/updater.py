@@ -88,10 +88,12 @@ class SulfurasUpdater:
 
 
 def _decrease_quality(item: Item, amount: int = 1) -> None:
+    """The Quality of an item is never negative"""
     item.quality = max(m.MIN_QUALITY, item.quality - amount)
 
 
 def _increase_quality(item: Item, amount: int = 1) -> None:
+    """The Quality of an item is never more than 50"""
     item.quality = min(m.MAX_QUALITY, item.quality + amount)
 
 
