@@ -1,7 +1,7 @@
 from typing import Protocol
 
-import src.models as m
-from src.item import Item
+import models as m
+from item import Item
 
 
 class ItemUpdater(Protocol):

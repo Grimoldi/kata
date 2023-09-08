@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
-import src.models as m
-import src.updater as u
-from src.item import Item
+import models as m
+import updater as u
+from item import Item
 
 updater_mapping = {
     m.AGED_BRIAR: u.AgedBrieUpdater(),
     m.BACKSTAGE_PASS: u.BackstagePassUpdater(),
     m.SULFURAS: u.SulfurasUpdater(),
-    m.CONJURED_BREAD: u.ConjuredUpdater(),
+    m.CONJURED: u.ConjuredUpdater(),
 }
 
 

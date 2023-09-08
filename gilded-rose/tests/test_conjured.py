@@ -10,7 +10,7 @@ class GildedRoseTest(unittest.TestCase):
         """Conjured items degrade in Quality twice as fast as normal items"""
         sell_in = 1
         quality = 4
-        items = [Item(m.CONJURED_BREAD, sell_in, quality)]
+        items = [Item(m.CONJURED, sell_in, quality)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual(quality - 2, items[0].quality)
@@ -19,7 +19,7 @@ class GildedRoseTest(unittest.TestCase):
         """Conjured items degrade in Quality twice as fast as normal items"""
         sell_in = 0
         quality = 4
-        items = [Item(m.CONJURED_BREAD, sell_in, quality)]
+        items = [Item(m.CONJURED, sell_in, quality)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual(quality - 4, items[0].quality)
@@ -28,7 +28,7 @@ class GildedRoseTest(unittest.TestCase):
         """The Quality of an item is never negative"""
         sell_in = 0
         quality = 2
-        items = [Item(m.CONJURED_BREAD, sell_in, quality)]
+        items = [Item(m.CONJURED, sell_in, quality)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual(0, items[0].quality)
