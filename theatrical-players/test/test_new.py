@@ -6,9 +6,9 @@ from approvaltests import verify
 from src.statement import statement
 
 
-def test_example_statement():
-    with open(get_adjacent_file("invoice.json")) as f:
+def test_statement_with_new_play_types():
+    with open(get_adjacent_file("invoice_new_plays.json")) as f:
         invoice = json.loads(f.read())
-    with open(get_adjacent_file("plays.json")) as f:
+    with open(get_adjacent_file("new_plays.json")) as f:
         plays = json.loads(f.read())
     verify(statement(invoice, plays))
