@@ -14,7 +14,6 @@ pytest-approvaltests = "^0.2.4"
 
 [tool.pytest.ini_options]
 addopts = "--approvaltests-use-reporter=PythonNative"
-testpaths = "tests"
 pythonpath = "./"
 
 [build-system]
