@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "gilded-rose"
+name = "theatrical-players"
 version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"
-packages = [{include = "gilded_rose", from = "src"}]
+packages = [{include = "theatrical_players", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -12,6 +12,10 @@ pytest = "^7.4.2"
 approvaltests = "^9.0.0"
 pytest-approvaltests = "^0.2.4"
 
+[tool.pytest.ini_options]
+addopts = "--approvaltests-use-reporter=PythonNative"
+testpaths = "tests"
+pythonpath = "./"
 
 [build-system]
 requires = ["poetry-core"]
