@@ -105,7 +105,7 @@ def _get_tragedy_amount(audience: int) -> float:
 def _get_credit(play_type: str, audience: int) -> float:
     """Add volume credits."""
     volume_credits = _get_credits_volume(audience)
-    if play_type == "comedy":
+    if play_type == m.PlayType.COMEDY:
         volume_credits += _get_comedy_credit_increment(audience)
     return volume_credits
 
