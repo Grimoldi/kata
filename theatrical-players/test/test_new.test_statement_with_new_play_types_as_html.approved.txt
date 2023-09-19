@@ -1,0 +1,16 @@
+<html>
+	<style>
+		th, td {
+			padding: 15px;
+		}
+	</style>
+	<body>
+		<table border=1>
+			<tr><td colspan=3><p align="right">BigCoII</td></tr>
+			<tr><td>Henry V</td><td>$831.00</td><td>53 seats</tr>
+			<tr><td>As You Like It</td><td>$450.00</td><td>55 seats</tr>
+			<tr><td colspan=3>Amount owed is <font color=orange>$1,281.00</font>.</td></tr>
+			<tr><td colspan=3>You earned <font color=green>48 credits</font>.</td></tr>
+		</table>
+	</body>
+</html>

@@ -43,7 +43,7 @@ def statement(
 
     output_template.add_total(total_amount)
     output_template.add_credits(volume_credits)
-    return output_template.result
+    return output_template.bill
 
 
 def _get_play_amount(play_type: str, audience: int) -> float:
@@ -63,18 +63,20 @@ def _get_play_amount(play_type: str, audience: int) -> float:
 
 def _get_comedy_amount(audience: int) -> float:
     """Get the amount for the comedy play type."""
+    THRESHOLD = 20
     this_amount = 300_00
-    if audience > 20:
-        this_amount += 100_00 + 5_00 * (audience - 20)
+    if audience > THRESHOLD:
+        this_amount += 100_00 + 5_00 * (audience - THRESHOLD)
     this_amount += 3_00 * audience
     return this_amount
 
 
 def _get_history_amount(audience: int) -> float:
     """Get the amount for the history play type."""
+    THRESHOLD = 40
     this_amount = 500_00
-    if audience > 40:
-        this_amount += 120_00 + 4_00 * (audience - 40)
+    if audience > THRESHOLD:
+        this_amount += 120_00 + 4_00 * (audience - THRESHOLD)
 
     this_amount += 3_00 * audience
     return this_amount
@@ -82,18 +84,20 @@ def _get_history_amount(audience: int) -> float:
 
 def _get_pastoral_amount(audience: int) -> float:
     """Get the amount for the pastoral play type."""
+    THRESHOLD = 15
     this_amount = 250_00
-    if audience > 15:
-        this_amount += 5_00 * (audience - 15)
+    if audience > THRESHOLD:
+        this_amount += 5_00 * (audience - THRESHOLD)
 
     return this_amount
 
 
 def _get_tragedy_amount(audience: int) -> float:
     """Get the amount for the tragedy play type."""
+    THRESHOLD = 30
     this_amount = 400_00
-    if audience > 30:
-        this_amount += 10_00 * (audience - 30)
+    if audience > THRESHOLD:
+        this_amount += 10_00 * (audience - THRESHOLD)
 
     return this_amount
 
