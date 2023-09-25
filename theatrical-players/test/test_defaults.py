@@ -3,7 +3,7 @@ import json
 import pytest
 from approval_utilities.utils import get_adjacent_file
 from approvaltests import verify
-from src.statement import statement
+from statement import statement  # type: ignore
 
 
 def test_example_statement():

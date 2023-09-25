@@ -1,10 +1,9 @@
 import json
 
-import pytest
-import src.models as m
+import models as m  # type: ignore
 from approval_utilities.utils import get_adjacent_file
 from approvaltests import verify
-from src.statement import statement
+from statement import statement  # type: ignore
 
 
 def test_statement_with_new_play_types():
